@@ -1,0 +1,21 @@
+import {chromium,Page, test} from "@playwright/test"
+test.only(`Opening URL`,async()=>{
+
+const browser = await chromium.launch()
+const browserContext = await browser.newContext()
+const Page1 = await browserContext.newPage()
+
+await Page1.goto("https://qeagle-dev-ed.my.salesforce.com/")
+const cURL = Page1.url()
+console.log(`Launched the browser with the URL -  ${cURL}`)
+
+const anotherbrowserContext = await browser.newContext()
+const page2 = await anotherbrowserContext.newPage()
+
+await page2.goto("https://platform.testleaf.com/")
+const cURL2 = page2.url()
+console.log(`Launched the browser with the URL -  ${cURL2}`)
+
+}
+    
+)
