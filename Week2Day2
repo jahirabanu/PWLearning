@@ -1,0 +1,26 @@
+import {test} from "@playwright/test"
+test(`login to salesforce app`,async({page})=>{
+//Load the URL
+await page.goto("https://login.salesforce.com/")
+
+const userNameSelector:string = "#username"
+const userPasswordSelector:string = "#password"
+const loginButtonSelctonr:string = "#Login"
+
+await page.locator(userNameSelector).fill("hari.radhakrishnan@qeagle.com")
+await page.locator(userPasswordSelector).fill("Leaf$1234")
+await page.locator(loginButtonSelctonr).click()
+
+await page.waitForTimeout(5000)
+await page.locator(`button[class$="salesforceIdentityAppLauncherHeader"]`).click()
+
+await page.waitForTimeout(5000)
+await page.locator("button[aria-label='View All Applications']").click();
+
+await page.waitForTimeout(5000)
+
+await page.locator("input[class$='slds-input']").fill("Sales")
+//await page.locator('lightning-button[class$= "slds-button slds-p-horizontal--small"]').click()
+
+}
+)
